@@ -1,0 +1,48 @@
+/*
+ * Leighton Duffin 8/26/27
+ * Project 1 contact CSS
+ */
+body {
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: rgb(167, 167, 167);
+}
+.faqs > h1 {
+    font-size: 150%;
+}
+.faqs > h2 {
+    font-size: 120%;
+    padding: .25em 0 .25em 25px;
+    cursor: pointer;
+    background: url(../imgs/plus.png) no-repeat left center;
+}
+h2.minus {
+    background: url(../imgs/minus.png) no-repeat left center;
+}
+a {
+    color: black;
+    text-decoration: none;
+}
+a:focus, a:hover { color: blue; }
+
+.faqs > div {
+    display: none;
+}
+.faqs > div.open {
+    display: block;
+}
+.faqs > div > ul {
+    padding-left: 45px;
+}
+.faqs > div > ul > li {
+    padding-bottom: .25em;
+}
+.faqs > div > p {
+    padding-bottom: .25em;
+    padding-left: 25px;
+}
