@@ -1,0 +1,34 @@
+/*
+ * Leighton Duffin 8/26/27
+ * Project 1 Index CSS
+ */
+
+.carousel-inner > .item > img {
+    margin: 0 auto;
+}
+
+body {
+    background-color: rgb(167, 167, 167);
+}
+
+#ex1Slider .slider-selection {
+    background: #BABABA;
+}
+
+#numOfAError, #numOfCError {
+    color: red;
+}
+
+.form-control {
+    width: 25%;
+}
+
+.equipment > .container > button {
+    width: 20%;
+    min-width: 150px;
+    margin: 10px auto;
+}
+
+#quote {
+    font-size: 2em;
+}

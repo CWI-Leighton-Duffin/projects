@@ -1,0 +1,20 @@
+/*
+ * Leighton Duffin 8/26/27
+ * Project 1 contact CSS
+ */
+body {
+    background-color: rgb(167, 167, 167);
+}
+
+main > h1,
+main > h2 {
+    text-align: center;
+}
+
+.form-control {
+    width: 75%
+}
+
+.errorText {
+    color: red;
+}
