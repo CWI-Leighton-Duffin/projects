@@ -3,7 +3,7 @@
  */
 
 var $ = function (selector) {
-    switch(selector.charAt(0)) {
+    switch (selector.charAt(0)) {
         case '.':
             return document.getElementsByClassName(selector.substring(1));
         case '#':
@@ -14,6 +14,7 @@ var $ = function (selector) {
 };
 
 var submitForm = function () {
+    sessionStorage.clear();
     var firstName = $('#firstName').value;
     var lastName = $('#lastName').value;
     var email = $('#inputEmail').value;
@@ -31,19 +32,38 @@ var submitForm = function () {
         valid = false;
     } else $('#lastError').textContent = '';
     for (var i = 0; i < email.length; ++i) {
-        if(email.charAt(i) === '@') emailAt = true;
-        if(email.charAt(i) === '.') emailDot = true;
+        if (email.charAt(i) === '@') emailAt = true;
+        if (email.charAt(i) === '.') emailDot = true;
     }
     if (!emailAt || !emailDot) {
         $('#emailError').textContent = 'Please provide a valid email address.';
         valid = false;
     } else $('#emailError').textContent = '';
     //Submit form if valid
-    if (valid) { 
-        $('#firstName').value = '';
-        $('#lastName').value = '';
-        $('#inputEmail').value = '';
-        $('#commentsArea').value = '';
-        window.alert("Thank you for your inquiry! We'll respond as soon as we can!");
+    if (valid) {
+        sessionStorage.firstName = firstName;
+        sessionStorage.lastName = lastName;
+        sessionStorage.email = email;
+        if (!$('#genFeedback').checked && !$('#privSession').checked) sessionStorage.reason = 'none';
+        else {
+            if ($('#genFeedback').checked) {
+                sessionStorage.reason ? sessionStorage.reason += ', ' + 'general feedback' : sessionStorage.reason = 'general feedback';
+            }
+            if ($('#privSession').checked) {
+                sessionStorage.reason ? sessionStorage.reason += ', ' + 'private session' : sessionStorage.reason = 'private session';
+            }
+        }
+        sessionStorage.comments = $('#commentsArea').value;
+
+        window.location.href = "contact-success.html";
+    }
+};
+
+window.onload = function () {
+    if (sessionStorage.length > 0) {
+        $('#name').textContent = sessionStorage.firstName + ' ' + sessionStorage.lastName;
+        $('#email').textContent = sessionStorage.email;
+        $('#reason').textContent = sessionStorage.reason;
+        $('#comments').textContent = sessionStorage.comments;
     }
 };

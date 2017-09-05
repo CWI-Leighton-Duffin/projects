@@ -40,10 +40,17 @@ var submitForm = function () {
     } else $('#email2Error').textContent = '';
     //Submit form if valid
     if (valid) {
-        $('#firstName').value = '';
-        $('#lastName').value = '';
-        $('#inputEmail').value = '';
-        $('#confirmEmail').value = '';
-        window.alert("Thank you for signing up!");
+        sessionStorage.firstName = firstName;
+        sessionStorage.lastName = lastName;
+        sessionStorage.email = email1;
+
+        window.location.href = "newsletter-success.html";
+    }
+};
+
+window.onload = function () {
+    if (sessionStorage.length > 0) {
+        $('#name').textContent = sessionStorage.firstName + ' ' + sessionStorage.lastName;
+        $('#email').textContent = sessionStorage.email;
     }
 };
