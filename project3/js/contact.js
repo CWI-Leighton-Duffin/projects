@@ -18,6 +18,7 @@ var submitForm = function () {
     var firstName = $('#firstName').value;
     var lastName = $('#lastName').value;
     var email = $('#inputEmail').value;
+    var phone = $('#inputPhone').value;
     var emailAt = false;
     var emailDot = false;
     var valid = true;
@@ -39,11 +40,19 @@ var submitForm = function () {
         $('#emailError').textContent = 'Please provide a valid email address.';
         valid = false;
     } else $('#emailError').textContent = '';
+    if (!/^(\d{3}(-|\.|\s)?|\(\d{3}\) ?)\d{3}(-|\.|\s)?\d{4}$/.test(phone)) { //regex validate phone number
+        $('#phoneError').textContent = "Please provide a valid 10-digit phone number.";
+        valid = false;
+    } else {
+        $('#phoneError').textContent = '';
+        phone = phone.replace(/(\(|\)|-|\.| )/g, ''); //regex strip phone number to digits only
+    }
     //Submit form if valid
     if (valid) {
         sessionStorage.firstName = firstName;
         sessionStorage.lastName = lastName;
         sessionStorage.email = email;
+        sessionStorage.phone = phone;
         if (!$('#genFeedback').checked && !$('#privSession').checked) sessionStorage.reason = 'none';
         else {
             if ($('#genFeedback').checked) {
@@ -63,6 +72,7 @@ window.onload = function () {
     if (sessionStorage.length > 0) {
         $('#name').textContent = sessionStorage.firstName + ' ' + sessionStorage.lastName;
         $('#email').textContent = sessionStorage.email;
+        $('#phone').textContent = sessionStorage.phone;
         $('#reason').textContent = sessionStorage.reason;
         $('#comments').textContent = sessionStorage.comments;
     }
