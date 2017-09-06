@@ -40,7 +40,7 @@ var submitForm = function () {
         $('#emailError').textContent = 'Please provide a valid email address.';
         valid = false;
     } else $('#emailError').textContent = '';
-    if (!/^(\d{3}(-|\.|\s)?|\(\d{3}\) ?)\d{3}(-|\.|\s)?\d{4}$/.test(phone)) { //regex validate phone number
+    if (!/^(\d{3}[-\. ]?|\(\d{3}\)[-\. ]?)\d{3}[-\. ]?\d{4}$/.test(phone)) { //regex validate phone number
         $('#phoneError').textContent = "Please provide a valid 10-digit phone number.";
         valid = false;
     } else {
