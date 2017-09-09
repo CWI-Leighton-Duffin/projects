@@ -49,6 +49,7 @@ var submitForm = function () {
     }
     //Submit form if valid
     if (valid) {
+        //store form data in sessionStorage for acknowledgement page
         sessionStorage.firstName = firstName;
         sessionStorage.lastName = lastName;
         sessionStorage.email = email;
@@ -69,6 +70,7 @@ var submitForm = function () {
 };
 
 window.onload = function () {
+    //load acknowledgement form data if applicable
     if (sessionStorage.length > 0) {
         $('#name').textContent = sessionStorage.firstName + ' ' + sessionStorage.lastName;
         $('#email').textContent = sessionStorage.email;
